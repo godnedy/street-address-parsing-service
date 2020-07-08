@@ -3,7 +3,8 @@ package com.godnedy.address
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import static com.godnedy.address.AddressType.*
+import static com.godnedy.address.parse.AddressType.*
+
 
 class AddressTypeFinderSpec extends Specification {
 
@@ -14,7 +15,8 @@ class AddressTypeFinderSpec extends Specification {
         when:
             def result = finder.findAddressType(address)
         then:
-            result == addressType
+            result.isPresent()
+            result.get() == addressType
         where:
             address                               || addressType
             "Winterallee 3"                       || SIMPLE
@@ -34,8 +36,8 @@ class AddressTypeFinderSpec extends Specification {
             "Calle Aduana, 29"                    || STREET_COMMA_HOUSE
             "Way 2259, 2919"                      || STREET_COMMA_HOUSE
 
-            "200 Broadway Av"                     || HOUSE_STREET
-            "1B HaDoa"                            || HOUSE_STREET
+            "200 Broadway Av"                     || SIMPLE_HOUSE_STREET
+            "1B HaDoa"                            || SIMPLE_HOUSE_STREET
 
             "Calle 39 No 1540"                    || STREET_NUMBER_HOUSE_NUMBER_SUFFIX
             "Calle 34 #24-30"                     || STREET_NUMBER_HOUSE_NUMBER_SUFFIX

@@ -3,7 +3,9 @@ package com.godnedy.address.parse;
 import com.godnedy.address.StreetAddress;
 import com.godnedy.address.regex.AddressRegexComponent;
 
-public class HouseNumberParsingStrategy implements ParsingStrategy { //TODO name?
+class SimpleHouseStreetParsingStrategy implements ParsingStrategy {
+
+    static final String NAME = "SimpleHouseStreetParsingStrategy";
 
     @Override
     public StreetAddress parse(String entry) {

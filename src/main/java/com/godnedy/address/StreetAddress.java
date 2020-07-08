@@ -5,5 +5,5 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class StreetAddress {
     public final String street;
-    public final String houseNumber;
+    public final String housenumber;
 }
